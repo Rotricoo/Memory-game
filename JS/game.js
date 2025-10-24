@@ -1,11 +1,11 @@
 let grupoDeCartas = [
-  "/Assets/Photos/Andreia.jpg",
-  "/Assets/Photos/Andressa.jpg",
-  "/Assets/Photos/Ju.jpg",
-  "/Assets/Photos/Lara.jpg",
-  "/Assets/Photos/Maria-Eduarda.jpg",
-  "/Assets/Photos/Matt.jpg",
-  "/Assets/Photos/Rod.jpg",
+  "Assets/Photos/Andreia.jpg",
+  "Assets/Photos/Andressa.jpg",
+  "Assets/Photos/Ju.jpg",
+  "Assets/Photos/Lara.jpg",
+  "Assets/Photos/Maria-Eduarda.jpg",
+  "Assets/Photos/Matt.jpg",
+  "Assets/Photos/Rod.jpg",
 ];
 
 let totalDeCartas = grupoDeCartas.concat(grupoDeCartas);
