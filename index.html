@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/CSS/reset.css" />
+    <link rel="stylesheet" href="/CSS/styles.css" />
+    <title>EAI FAMILIA</title>
+  </head>
+  <body>
+    <header>
+      <h1>Let's match?</h1>
+    </header>
+
+    <div class="placar">
+      <p>Tentativas: <span id="tentativas">0</span></p>
+      <p>Acertos: <span id="acertos">0</span></p>
+    </div>
+
+    <main>
+      <div id="mesa"></div>
+    </main>
+
+    <div id="modalVitoria" class="modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-container">
+        <h2></h2>
+        <p></p>
+        <div class="modal-stats">
+          <p>Tempo: <span id="modalTempo"></span></p>
+          <p>Tentativas: <span id="modalTentativas"></span></p>
+        </div>
+        <button id="btnJogarNovamente">Jogar Novamente</button>
+      </div>
+    </div>
+
+    <script src="/JS/game.js"></script>
+  </body>
+</html>
