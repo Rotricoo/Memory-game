@@ -26,8 +26,72 @@ main {
 }
 
 #mesa {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.inicio {
+  position: fixed;
+  inset: 0;
+  display: none; /* escondido por padrão */
+  justify-content: center;
+  align-items: center;
+  z-index: 900; /* abaixo do modal de vitória (1000) */
+}
+
+.inicio.ativo {
+  display: flex; /* mostra quando ativo */
+}
+
+.inicio-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.inicio-container {
+  position: relative;
+  z-index: 901;
+  background: white;
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4);
+  max-width: 28rem;
+  animation: modalSlideIn 0.3s ease;
+}
+
+.inicio-container h2 {
+  margin: 0 0 1rem 0;
+  color: orangered;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.inicio-container h2 strong {
+  font-size: 1.5;
+  font-weight: bold;
+}
+
+#btnIniciar {
+  background: linear-gradient(130deg, orange, orangered);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#btnIniciar:hover {
+  transform: scale(1.05);
+}
+#btnIniciar:active {
+  transform: scale(0.95);
 }
 
 .carta {
@@ -35,11 +99,11 @@ main {
   height: 6rem;
   border: 0.3rem white solid;
   border-radius: 1rem;
-  margin: 1rem;
   box-shadow: 0rem 0rem 1rem 0.1rem rgb(97, 97, 97);
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
+  flex: 0 0 6rem;
 }
 
 .cartaFrente img {
@@ -184,4 +248,12 @@ main {
 
 #btnJogarNovamente:active {
   transform: scale(0.95);
+}
+
+@media (min-width: 720px) {
+  #mesa {
+    max-width: calc(5 * 6rem + 3 * 1rem);
+    gap: 3rem;
+    margin: 0 auto;
+  }
 }

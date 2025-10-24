@@ -11,14 +11,13 @@ let grupoDeCartas = [
 let totalDeCartas = grupoDeCartas.concat(grupoDeCartas);
 let primeiraCarta = null;
 let segundaCarta = null;
-let mesaTravada = false;
+let mesaTravada = true;
 let tempoInicio = null;
 let tentativas = 0;
 let acertos = 0;
 
 function distribuirCartas() {
   const mesa = document.getElementById("mesa");
-  tempoInicio = Date.now();
 
   function embaralhar(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -77,6 +76,7 @@ function distribuirCartas() {
           segundaCarta = null;
 
           if (acertos === grupoDeCartas.length) {
+            mesaTravada = true;
             let tempoFinal = Math.floor((Date.now() - tempoInicio) / 1000);
             let minutos = Math.floor(tempoFinal / 60);
             let segundos = tempoFinal % 60;
@@ -105,13 +105,19 @@ function distribuirCartas() {
   });
 }
 
+function iniciarJogo() {
+  tempoInicio = Date.now();
+  mesaTravada = false;
+  document.getElementById("inicio").classList.remove("ativo");
+}
+
 function resetJogo() {
   primeiraCarta = null;
   segundaCarta = null;
-  mesaTravada = false;
+  mesaTravada = true;
   tentativas = 0;
   acertos = 0;
-  tempoInicio = Date.now();
+  tempoInicio = null;
 
   document.getElementById("tentativas").textContent = 0;
   document.getElementById("acertos").textContent = 0;
@@ -120,6 +126,8 @@ function resetJogo() {
 
   totalDeCartas = grupoDeCartas.concat(grupoDeCartas);
   distribuirCartas();
+
+  document.getElementById("inicio").classList.add("ativo");
 }
 
 function mostrarModalVitoria(numTentativas, minutos, segundos) {
@@ -128,9 +136,22 @@ function mostrarModalVitoria(numTentativas, minutos, segundos) {
 
   document.getElementById("modalVitoria").classList.add("ativo");
 
-  document.getElementById("btnJogarNovamente").addEventListener("click", function () {
-    document.getElementById("modalVitoria").classList.remove("ativo");
+  confetti({
+    particleCount: 1000,
+    spread: 100,
+    origin: {
+      y: 0.9,
+    },
+  });
+}
 
+const btnIniciar = document.getElementById("btnIniciar");
+if (btnIniciar) btnIniciar.addEventListener("click", iniciarJogo);
+
+const btnJogarNovamente = document.getElementById("btnJogarNovamente");
+if (btnJogarNovamente) {
+  btnJogarNovamente.addEventListener("click", function () {
+    document.getElementById("modalVitoria").classList.remove("ativo");
     resetJogo();
   });
 }
